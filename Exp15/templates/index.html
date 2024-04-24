@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data</title>
+    <style>
+        .weather-info {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .weather-info p {
+            margin: 0;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Data</h1>
+    <div class="weather-info">
+        {% if data %}
+            {% for item in data['list'] %}
+                <p>Date and Time: {{ item['dt_txt'] }}</p>
+                <p>Temperature: {{ item['main']['temp'] }} °C</p>
+                <p>Feels Like: {{ item['main']['feels_like'] }} °C</p>
+                <p>Weather: {{ item['weather'][0]['description'] }}</p>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p>No weather data available</p>
+        {% endif %}
+    </div>
+</body>
+</html>
